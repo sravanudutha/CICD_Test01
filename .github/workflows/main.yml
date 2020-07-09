@@ -16,6 +16,11 @@ jobs:
           run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -manualLicenseFile .github/Unity_v2019.x.ulf || exit 0
         
         
+        # Create a folder to store apk
+        - name : Create a folder to store apk
+          run: 'mkdir --parents results/artifacts'
+    
+        
         
         
         # Build Windows and OSX
@@ -24,15 +29,12 @@ jobs:
        # - name: Build OSX Player
         #  run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -noUpm -logFile -projectPath . -buildOSXUniversalPlayer ./bin-osx/CISample.app      
         
-        # Create a folder to store apk
-        - name : Create a folder to store apk
-          run: 'mkdir --parents results/artifacts'
-          
+        
         #- name : create floder next action
         #  run: 'env | grep GITHUB_ | sort > results/artifacts/ci-env.txt'
         
         - name: Archive Android Build
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v1
           with:
             name: CISampleWin64Binary
             path: results/artifacts/                  #https://github.com/sravanudutha/ApkRepository/blob/master            #../bin-win64
