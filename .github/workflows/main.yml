@@ -28,8 +28,8 @@ jobs:
         - name : Create a folder to store apk
           run: 'mkdir --parents results/artifacts'
           
-        - name : create floder next action
-          run: 'env | grep GITHUB_ | sort > results/artifacts/ci-env.txt'
+        #- name : create floder next action
+        #  run: 'env | grep GITHUB_ | sort > results/artifacts/ci-env.txt'
         
         - name: Archive Android Build
           uses: actions/upload-artifact@v1
