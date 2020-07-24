@@ -26,12 +26,12 @@ jobs:
         # Build Windows and OSX
         - name: Build Android Player
           run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -noUpm -logFile -projectPath . -Android ./CISample.apk
-       # - name: Build OSX Player
-        #  run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -noUpm -logFile -projectPath . -buildOSXUniversalPlayer ./bin-osx/CISample.app      
+        - name: Build OSX Player
+          run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -noUpm -logFile -projectPath . -buildOSXUniversalPlayer ./bin-osx/CISample.app      
         
         
-        #- name : create floder next action
-        #  run: 'env | grep GITHUB_ | sort > results/artifacts/ci-env.txt'
+        - name : create floder next action
+          run: 'env | grep GITHUB_ | sort > results/artifacts/ci-env.txt'
         
         - name: Archive Android Build
           uses: actions/upload-artifact@v1
@@ -39,8 +39,8 @@ jobs:
             name: AndroidApk
             path: results/artifacts/                  #https://github.com/sravanudutha/ApkRepository/blob/master            #../bin-win64
 
-      #  - name: Archive Mac Build
-       #   uses: actions/upload-artifact@v1
-        #  with:
-         #   name: CISampleOSXBinary
-          #  path: ./bin-osx
+        - name: Archive Mac Build
+          uses: actions/upload-artifact@v1
+          with:
+            name: CISampleOSXBinary
+            path: ./bin-osx
